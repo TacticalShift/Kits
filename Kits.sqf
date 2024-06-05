@@ -1,0 +1,209 @@
+// ***********************************
+// Gear Kits 
+// ***********************************
+// ******** GEAR CLASSES **********
+//
+//	Maptools		"ACE_MapTools"	["ACE_MapTools",1]
+//	Binocular		"Binocular"	["Binocular",1]		
+//
+// 	Map			"ItemMap"
+//	Compass			"ItemCompass"
+//	Watch			"ItemWatch"
+//	Personal Radio		"ItemRadio"
+//
+// ******* KIT NAMES FORMAT ********
+//  Kit names format:		kit_FACTION_ROLE
+//	Platoon Leader / Командир Взвода	->	kit_ussf_pl
+//	Squad Leader / Командир отделения	->	kit_ussf_sl
+//	Section Leader				->	kit_ussf_sl
+//	2IC					->	kit_ussf_2ic
+//	Fireteam Leader				->	kit_ussf_ftl
+//	Automatic Rifleman			->	kit_ussf_ar
+//	Grenadier / Стрелок (ГП)		->	kit_ussf_gr
+//	Rifleman / Стрелок			->	kit_ussf_r
+//	Экипаж					->	kit_ussf_crew
+//	Пулеметчик				->	kit_ussf_mg
+//	Стрелок-Гранатометчик			->	kit_ussf_at
+//	Стрелок, помощник гранатометчика	->	kit_ussf_aat
+//	Старший стрелок				->	kit_ussf_ar / kit_ussf_ss
+//	Снайпер					->	kit_ussf_mm
+// ****************
+//
+// ******** USEFUL MACROSES *******
+// Maros for Empty weapon
+#define EMPTYKIT	[["","","","",""],["","","","",""],["","","","",""],["","","","",""],[],[["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0],["",0]],[["",0],["",0],["",0],["",0],["",0],["",0]],[]]
+// Macros for Empty weapon
+#define EMPTYWEAPON	"","",["","","",""]
+// Macros for the list of items to be chosen randomly
+#define RANDOM_ITEM	["H_HelmetB_grass","H_HelmetB"]
+// Macros to give the item only if daytime is in given inerval (e.g. to give NVGoggles only at night)
+#define NIGHT_ITEM(X)	if (daytime < 9 || daytime > 18) then { X } else { "" }
+
+// ******** ASSIGNED and UNIFORM ITEMS MACRO ********
+#define NVG_NIGHT_ITEM		if (daytime < 9 || daytime > 18) then { "NVGoggles_OPFOR" } else { "" }
+#define BINOCULAR_ITEM		"Binocular"
+
+#define ASSIGNED_ITEMS		"ItemMap","ItemCompass","ItemWatch","ItemRadio", NVG_NIGHT_ITEM
+#define ASSIGNED_ITEMS_L	"ItemMap","ItemCompass","ItemWatch","ItemRadio", NVG_NIGHT_ITEM, BINOCULAR_ITEM
+
+#define UNIFORM_ITEMS		["ACE_fieldDressing",5],["ACE_packingBandage",5],["ACE_elasticBandage",5],["ACE_tourniquet",2],["ACE_morphine",2],["ACE_epinephrine",2],["ACE_quikclot",5],["ACE_CableTie",2],["ACE_Flashlight_XL50",1],["ACE_EarPlugs",1]
+#define UNIFORM_ITEMS_L		["ACE_fieldDressing",5],["ACE_packingBandage",5],["ACE_elasticBandage",5],["ACE_tourniquet",2],["ACE_morphine",2],["ACE_epinephrine",2],["ACE_quikclot",5],["ACE_CableTie",2],["ACE_Flashlight_XL50",1],["ACE_EarPlugs",1],["ACE_MapTools",1]
+// ****************
+
+kit_guy_r = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_roll2_gloves_dirty_Tigerstripe","cwr3_b_vest_pilot","B_Kitbag_rgr","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","cwr3_arifle_akm","CUP_30Rnd_762x39_AK47_bakelite_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","CUP_launch_RPG7V","rhs_rpg7_PG7VL_mag",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["rhs_mag_zarya2",2],["CUP_30Rnd_TE1_Yellow_Tracer_762x39_bakelite_AK47_M",7]]],
+	["<BACKPACK ITEMS >> ",[["CUP_PG7VL_M",3]]]
+];
+
+kit_guy_gr = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_roll2_dirty_Tigerstripe","cwr3_b_vest_pilot","B_Kitbag_rgr","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","CUP_arifle_AKM_GL","CUP_30Rnd_762x39_AK47_bakelite_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["rhs_mag_zarya2",2],["CUP_30Rnd_TE1_Yellow_Tracer_762x39_bakelite_AK47_M",7]]],
+	["<BACKPACK ITEMS >> ",[["CUP_1Rnd_HE_GP25_M",10],["CUP_1Rnd_SMOKE_GP25_M",2],["CUP_IlumFlareRed_GP25_M",2]]]
+];
+
+kit_guy_ar = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_dirty_Tigerstripe","cwr3_b_vest_pilot","B_Kitbag_rgr","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","CUP_lmg_minimi","CUP_200Rnd_TE4_Red_Tracer_556x45_M249",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["CUP_200Rnd_TE4_Green_Tracer_556x45_L110A1",1]]],
+	["<BACKPACK ITEMS >> ",[["CUP_200Rnd_TE4_Green_Tracer_556x45_L110A1",7]]]
+];
+
+kit_guy_ftl = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_Tigerstripe","cwr3_b_vest_pilot","B_Kitbag_rgr","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","CUP_arifle_AKMS_Early","CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_bakelite_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS_L],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS_L]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["PRIMARY MAG",7]]],
+	["<BACKPACK ITEMS >> ",[]]
+];
+
+kit_guy_sl = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_gloves_dirty_Tigerstripe","cwr3_b_vest_pilot","TFAR_rt1523g_fabric","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","CUP_arifle_AKMS_Early","CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_bakelite_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS_L],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS_L]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["PRIMARY MAG",7]]],
+	["<BACKPACK ITEMS >> ",[["PRIMARY MAG",5]]]
+];
+
+kit_guy_pl = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_gloves_dirty_Tigerstripe","cwr3_b_vest_pilot","TFAR_rt1523g_fabric","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","CUP_arifle_AKMS_Early","CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_bakelite_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS_L],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS_L]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["PRIMARY MAG",7]]],
+	["<BACKPACK ITEMS >> ",[["PRIMARY MAG",5]]]
+];
+
+kit_guy_psgt = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_gloves_dirty_Tigerstripe","cwr3_b_vest_pilot","TFAR_rt1523g_fabric","usm_bdu_boonie_tgrstp",""],
+	["<PRIMARY WEAPON >>  ","CUP_arifle_AKMS_Early","CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_bakelite_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS_L],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS_L]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["PRIMARY MAG",7]]],
+	["<BACKPACK ITEMS >> ",[["PRIMARY MAG",5]]]
+];
+
+kit_guy_helipilot = [
+	["<EQUIPEMENT >>  ","CUP_U_B_BDUv2_gloves_dirty_Tigerstripe","cwr3_b_vest_pilot","TFAR_rt1523g_fabric","cwr3_b_headgear_pilot",""],
+	["<PRIMARY WEAPON >>  ","","",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","","",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",2],["CUP_HandGrenade_RGO",2],["rhs_mag_zarya2",2]]],
+	["<BACKPACK ITEMS >> ",[]]
+];
+
+kit_guy_president = [
+	["<EQUIPEMENT >>  ","U_C_FormalSuit_01_black_F","","","",""],
+	["<PRIMARY WEAPON >>  ","","",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_FlareGun","CUP_FlareRed_265_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[]],
+	["<BACKPACK ITEMS >> ",[]]
+];
+
+
+kit_ban_r = [
+	["<EQUIPEMENT >>  ","U_BG_Guerrilla_6_1","V_Chestrig_oli","B_Kitbag_rgr","","G_Balaclava_oli"],
+	["<PRIMARY WEAPON >>  ","sp_fwa_fal_stg58_fn","sp_fwa_20Rnd_762_FAL_Metric",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","CUP_launch_RPG7V","CUP_PG7V_M",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["CUP_30Rnd_762x51_FNFAL_M",7],["rhs_mag_rgd5",2]]],
+	["<BACKPACK ITEMS >> ",[["rhs_rpg7_PG7VL_mag",3]]]
+];
+
+kit_ban_gr = [
+	["<EQUIPEMENT >>  ","U_BG_Guerilla3_1","cwr3_b_vest_pasgt_alice_woodland","B_Kitbag_rgr","","G_Balaclava_oli"],
+	["<PRIMARY WEAPON >>  ","sp_fwa_fal_stg58_fn","sp_fwa_20Rnd_762_FAL_Metric",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["rhs_mag_rgd5",2],["CUP_30Rnd_762x51_FNFAL_M",7]]],
+	["<BACKPACK ITEMS >> ",[["sp_fwa_1rnd_riflegrenade_mas_ap",5],["sp_fwa_1rnd_riflegrenade_mas_flare",5],["sp_fwa_1rnd_riflegrenade_mas_wp",1]]]
+];
+
+kit_ban_ar = [
+	["<EQUIPEMENT >>  ","CUP_U_USNavy_LHD_crew_Red","cwr3_o_vest_6b2","B_Kitbag_rgr","","G_Bandanna_sport"],
+	["<PRIMARY WEAPON >>  ","sp_fwa_m60","CUP_100Rnd_TE4_LRT4_Red_Tracer_762x51_Belt_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[]],
+	["<BACKPACK ITEMS >> ",[["CUP_100Rnd_TE4_LRT4_Green_Tracer_762x51_Belt_M",5],["rhs_mag_rgd5",2]]]
+];
+
+kit_ban_ftl = [
+	["<EQUIPEMENT >>  ","CUP_I_B_PMC_Unit_37","V_TacVestIR_blk","B_Kitbag_rgr","","G_Balaclava_blk"],
+	["<PRIMARY WEAPON >>  ","cwr3_arifle_fnfal_hlag","CUP_20Rnd_762x51_FNFAL_M",["","","",""]],
+	["<LAUNCHER WEAPON >>  ","","",["","","",""]],
+	["<HANDGUN WEAPON >>  ","CUP_hgun_Makarov","CUP_8Rnd_9x18_Makarov_M",["","","",""]],
+	["<ASSIGNED ITEMS >>  ", ASSIGNED_ITEMS],
+	["<UNIFORM ITEMS >> ",[UNIFORM_ITEMS]],
+	["<VEST ITEMS >> ",[["CUP_HandGrenade_RGD5",3],["CUP_30Rnd_762x51_FNFAL_M",6]]],
+	["<BACKPACK ITEMS >> ",[["rhs_mag_rgd5",2],["CUP_30Rnd_762x51_FNFAL_M",10]]]
+];
+
+kit_ban_random = [
+   "kit_ban_r"
+   ,"kit_ban_ar"
+   ,"kit_ban_gr"
+   ,"kit_ban_ftl"
+];
+
+cargo_kit_landrover = [
+	[["CUP_hgun_Makarov",5],["CUP_arifle_AKMS_Early",2],["CUP_lmg_minimi",2],["CUP_arifle_AKM_GL",2],["CUP_launch_RPG7V",2],["cwr3_arifle_akm",2]],
+	[["CUP_30Rnd_TE1_Green_Tracer_762x39_AK47_bakelite_M",10],["rhs_mag_zarya2",10],["CUP_HandGrenade_RGD5",10],["CUP_HandGrenade_RGO",10],["CUP_200Rnd_TE4_Green_Tracer_556x45_L110A1",5],["CUP_FlareWhite_GP25_M",10],["CUP_1Rnd_HE_GP25_M",10],["CUP_1Rnd_SmokeYellow_GP25_M",10],["CUP_1Rnd_SmokeGreen_GP25_M",10],["CUP_1Rnd_SmokeRed_GP25_M",10],["rhs_rpg7_PG7VL_mag",5]],
+	[["ACE_Flashlight_XL50",1],["ACE_epinephrine",15],["ACE_tourniquet",40],["ACE_CableTie",40],["ACE_morphine",15],["ACE_quikclot",40],["ACE_elasticBandage",40],["ACE_packingBandage",40]],
+	[["cwr3_i_bergen_backpack_dpm",3]]
+];
